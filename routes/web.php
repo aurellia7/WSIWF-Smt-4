@@ -55,9 +55,21 @@ Route::get('search/{search}', function ($search) {
 
 
 // Acara 4
+//route bernama 'profile'
 Route::get('user/{id}/profile', function ($id) {
     return route('profile', ['id' => $id]);
 })->name('profile');
+
+//generate url ke route bersama
+Route::get('/generate-url', function () {
+    $url = route('profile', ['id' => 5]);
+    return "URL ke profile: $url";
+});
+
+//redirect ke route bersama
+Route::get('/redirect-profile', function () {
+    return redirect()->route('profile', ['id' => 5]);
+});
 
 Route::middleware(['first', 'second'])->group(function () {
     Route::get('/', function () {});
