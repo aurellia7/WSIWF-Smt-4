@@ -3,6 +3,8 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; 
+use App\Http\Controllers\ManagementUserController; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,7 @@ Route::get('foo', function () {
     return 'hello';
 });
 
-Route::get('user', [UserController::class, 'index']);
+// Route::get('user', [UserController::class, 'index']);
 
 Route::match(['get', 'post'], '/match', function () {
     return 'simatch';
@@ -37,28 +39,28 @@ Route::permanentRedirect('/here', '/there');
 
 Route::view('/welcome', 'welcome', ['name' => 'Aurel']);
 
-Route::get('user/{name?}', function ($name = 'Lia') {
-    return $name;
-})->where('name', '[A-Za-z]+');
+// Route::get('user/{name?}', function ($name = 'Lia') {
+//     return $name;
+// })->where('name', '[A-Za-z]+');
 
-Route::get('user/{id}', function ($id) {
-    return $id;
-})->where('id', '[0-9]+');
+// Route::get('user/{id}', function ($id) {
+//     return $id;
+// })->where('id', '[0-9]+');
 
-Route::get('user/{id}/{name}', function ($id, $name) {
-    return "$id - $name";
-})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+// Route::get('user/{id}/{name}', function ($id, $name) {
+//     return "$id - $name";
+// })->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
 
-Route::get('search/{search}', function ($search) {
-    return $search;
-})->where('search', '.*');
+// Route::get('search/{search}', function ($search) {
+//     return $search;
+// })->where('search', '.*');
 
 
 // Acara 4
 //route bernama 'profile'
-Route::get('user/{id}/profile', function ($id) {
-    return route('profile', ['id' => $id]);
-})->name('profile');
+// Route::get('user/{id}/profile', function ($id) {
+//     return route('profile', ['id' => $id]);
+// })->name('profile');
 
 //generate url ke route bersama
 Route::get('/generate-url', function () {
@@ -91,3 +93,13 @@ Route::prefix('admin')->group(function () {
 Route::name('admin.')->group(function () {
     Route::get('users', function () {})->name('users');
 });
+
+Route::get('user', [ManagementUserController::class, 'index']);
+Route::get('user/create', [ManagementUserController::class, 'create']);
+Route::post('user', [ManagementUserController::class, 'store']);
+Route::get('user/{id}', [ManagementUserController::class, 'show']);
+Route::get('user/{id}/edit', [ManagementUserController::class, 'edit']);
+Route::put('user/{id}', [ManagementUserController::class, 'update']);
+Route::delete('user/{id}', [ManagementUserController::class, 'destroy']);
+
+Route::get('/home', [ManagementUserController::class, 'index']);
