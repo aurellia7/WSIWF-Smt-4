@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 
 class ManagementUserController extends Controller
 {
+    // public function index(){
+    //     return "Halo ini adalah method index, dalam controller Management User.";
+    // }
+
     public function index(){
-        return "Halo ini adalah method index, dalam controller Management User.";
+        $nama = "Aurellia Dzakiruna";
+        $pelajaran = ["Algoritma & Pemrograman","Kalkulus","Pemrograman Web"];
+        return view('home', compact('nama','pelajaran'));
     }
 
     public function create()
