@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        return "Halo ini adalah method index, dalam controller Management User";
+        return "Halaman User";
     }
 }
