@@ -112,3 +112,6 @@ Route::get("/home", function() {
 
 //Acara 7
 Route::resource('/home7', HomeController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
