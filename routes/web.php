@@ -4,8 +4,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController; 
 use App\Http\Controllers\HomeController; 
-use App\Http\Controllers\ManagementUserController; 
-
+use App\Http\Controllers\DashboardController; 
+use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +113,9 @@ Route::get("/home", function() {
 
 //Acara 7
 Route::resource('/home7', HomeController::class);
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Acara 8
+Route::resource('dashboard', DashboardController::class);
+Route::resource('product', ProductController::class);
