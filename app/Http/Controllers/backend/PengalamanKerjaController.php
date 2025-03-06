@@ -11,7 +11,7 @@ class PengalamanKerjaController extends Controller
     public function index()
     {
         $pengalaman_kerja = DB::table('pengalaman_kerja')->get();
-        return view('backend.pengalaman_kerja.index');
+        return view('backend.pengalaman_kerja.index', compact('pengalaman_kerja'));
     }
 
     public function create()
