@@ -9,6 +9,7 @@ use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\backend\PendidikanController;
 use App\Http\Controllers\backend\PengalamanKerjaController;
+use App\Http\Controllers\CobaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\SessionController;
 
@@ -140,3 +141,6 @@ Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
 
 Route::get('/formulir', [PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
+
+//coba error
+Route::get('/cobaerror/{nama?}', [CobaController::class, 'index']);
