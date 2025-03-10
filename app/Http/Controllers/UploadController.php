@@ -98,6 +98,7 @@ class UploadController extends Controller
 
         return response()->json(['success' => $imageName]);
     }
+
     public function pdf_upload()
     {
         return view('pdf_upload');
@@ -107,13 +108,9 @@ class UploadController extends Controller
     {
         $pdf = $request->file('file');
 
-        $pdfName = 'pdf_' . time() . '.' . $pdf->extension();
+        $pdfName = 'pdf_'.time().'.'.$pdf->extension();
         $pdf->move(public_path('pdf/dropzone'), $pdfName);
-
-        return response()->json(['success' => $pdfName]);
+        return response()->json(['succes' => $pdfName]);
     }
-
-
-
-
+   
 }
