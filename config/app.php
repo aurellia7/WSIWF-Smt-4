@@ -84,7 +84,7 @@ return [
     */
 
     'locale' => 'en',
-
+    'facade' => true,
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -141,7 +141,7 @@ return [
 
     'maintenance' => [
         'driver' => 'file',
-        // 'store' => 'redis',
+        'store' => 'redis',
     ],
 
     /*
@@ -165,9 +165,10 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
     ])->toArray(),
 
     /*
@@ -181,8 +182,6 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
-    ])->toArray(),
+    'aliases' => Facade::defaultAliases()->toArray(),
 
 ];

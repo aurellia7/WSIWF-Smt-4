@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,3 +145,10 @@ Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
 
 //coba error
 Route::get('/cobaerror/{nama?}', [CobaController::class, 'index']);
+
+//Acara 19
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+ 
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+ 
+Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
