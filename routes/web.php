@@ -13,6 +13,7 @@ use App\Http\Controllers\CobaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ApiPendidikanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,7 +129,7 @@ Route::resource('product', ProductController::class);
 
 //Acara 13
 Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
-    Route::resource('dash', DashboardController::class);
+    // Route::resource('dash', DashboardController::class);
     Route::resource('pengalaman_kerja', PengalamanKerjaController::class);
     Route::resource('pendidikan', PendidikanController::class);
 });
@@ -158,4 +159,11 @@ Route::get('/dropzone', [UploadController::class, 'dropzone'])->name('dropzone')
 Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
 
 Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
- Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
+Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
+
+
+Route::get('/api/pendidikan', [ApiPendidikanController::class, 'getAll']);
+Route::get('/api/pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
+Route::post('/api/pendidikan', [ApiPendidikanController::class, 'createPen']);
+Route::put('/api/pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
+Route::delete('/api/pendidikan/{id}', [ApiPendidikanController::class, 'deletePen']);
