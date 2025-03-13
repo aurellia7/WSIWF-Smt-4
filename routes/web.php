@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController; 
-use App\Http\Controllers\HomeController; 
-use App\Http\Controllers\DashboardController; 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\backend\PendidikanController;
@@ -114,7 +114,7 @@ Route::delete('user/{id}', [ManagementUserController::class, 'destroy']);
 
 Route::get('/home', [ManagementUserController::class, 'index']);
 
-Route::get("/home", function() {
+Route::get("/home", function () {
     return view('home');
 });
 
@@ -149,9 +149,9 @@ Route::get('/cobaerror/{nama?}', [CobaController::class, 'index']);
 
 //Acara 19
 Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
- 
+
 Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
- 
+
 Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
 
 //Acara 20
