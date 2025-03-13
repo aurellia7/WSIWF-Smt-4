@@ -161,9 +161,3 @@ Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->nam
 Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
 Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
 
-
-Route::get('/api/pendidikan', [ApiPendidikanController::class, 'getAll']);
-Route::get('/api/pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
-Route::post('/api/pendidikan', [ApiPendidikanController::class, 'createPen']);
-Route::put('/api/pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
-Route::delete('/api/pendidikan/{id}', [ApiPendidikanController::class, 'deletePen']);
