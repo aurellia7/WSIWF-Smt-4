@@ -16,7 +16,7 @@ class UploadController extends Controller
     public function proses_upload(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required',
+            'file' => 'required|image|mimes:jpg,png,gif',
             'keterangan' => 'required',
         ]);
 
@@ -47,7 +47,7 @@ class UploadController extends Controller
     public function resize_upload(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required',
+           'file' => 'required|image|mimes:jpg,png,gif',
             'keterangan' => 'required',
         ]);
 
@@ -84,33 +84,54 @@ class UploadController extends Controller
             return redirect(route('upload'))->with('error', 'Data gagal ditambahkan!');
         }
     }
+
+    
     public function dropzone()
     {
         return view('dropzone');
     }
 
-    public function dropzone_store(Request $request)
-    {
-        $image = $request->file('file');
+public function dropzone_store(Request $request)//untuk menyimpan gambar yang di-upload menggunakan Dropzone
+{
+    // Cek apakah ada file yang di-upload
+    if ($request->hasFile('file')) { 
+        $uploadedImages = []; // Array untuk menyimpan nama file yang berhasil di-upload
 
-        $imageName = time() . '.' . $image->extension();
-        $image->move(public_path('img/dropzone'), $imageName);
+        // Iterasi terhadap semua file yang di-upload
+        foreach ($request->file('file') as $image) {  
+            $imageName = time() . '_' . $image->getClientOriginalName(); // Buat nama untuk file
+            $image->move(public_path('img/dropzone'), $imageName); // Pindahkan file ke folder img/dropzone
+            $uploadedImages[] = $imageName; // Tambahkan nama file ke array
+        }
 
-        return response()->json(['success' => $imageName]);
+        return response()->json(['success' => $uploadedImages]);
     }
 
-    public function pdf_upload()
-    {
-        return view('pdf_upload');
+    return response()->json(['error' => 'No files uploaded.']);
+}
+
+
+public function pdf_upload()
+{
+    return view('pdf_upload'); // Menampilkan halaman upload
+}
+
+public function pdf_store(Request $request)
+{
+    // Cek apakah ada file yang di-upload
+    if ($request->hasFile('file')) {
+        $uploadedPDFs = []; // Array untuk menyimpan nama file PDF yang berhasil di-upload
+
+        // Iterasi terhadap semua file yang di-upload
+        foreach ($request->file('file') as $pdf) {
+            $pdfName = 'pdf_' . time() . '_' . $pdf->getClientOriginalName(); // Buat nama untuk file PDF
+            $pdf->move(public_path('pdf/dropzone'), $pdfName); // Pindahkan file ke folder pdf/dropzone
+            $uploadedPDFs[] = $pdfName; // Tambahkan nama file ke array
+        }
+
+        return response()->json(['success' => $uploadedPDFs]);
     }
 
-    public function pdf_store(Request $request)
-    {
-        $pdf = $request->file('file');
-
-        $pdfName = 'pdf_'.time().'.'.$pdf->extension();
-        $pdf->move(public_path('pdf/dropzone'), $pdfName);
-        return response()->json(['succes' => $pdfName]);
-    }
-   
+    return response()->json(['error' => 'No files uploaded.']);
+}
 }

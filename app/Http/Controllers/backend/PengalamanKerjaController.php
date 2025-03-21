@@ -26,9 +26,9 @@ class PengalamanKerjaController extends Controller
     return view('backend.pengalaman_kerja.create', compact('pengalaman_kerja'));
 }
 
-public function update(Request $request)
+public function update(Request $request, $id)
 {
-    DB::table('pengalaman_kerja')->where('id', $request->id)->update([
+    DB::table('pengalaman_kerja')->where('id', $id)->update([
         'nama' => $request->nama,
         'jabatan' => $request->jabatan,
         'tahun_masuk' => $request->tahun_masuk,

@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('/pendidikan', [ApiPendidikanController::class, 'getAll']);
 
 Route::get('pendidikan', [ApiPendidikanController::class, 'getAll']);
- Route::get('pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
- Route::post('pendidikan', [ApiPendidikanController::class, 'createPen']);
- Route::put('pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
- Route::delete('pendidikan/{id}', [ApiPendidikanController::class, 'deletePen']);
+Route::get('pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
+Route::post('pendidikan', [ApiPendidikanController::class, 'createPen']);
+Route::put('pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
+Route::delete('pendidikan/{id}', [ApiPendidikanController::class, 'deletePen']);

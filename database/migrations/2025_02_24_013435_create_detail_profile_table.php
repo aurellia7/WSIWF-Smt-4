@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //acara 9
+        //karena modifikasi dari acara 11 menjadi dibawah itu
+        // //acara 9
         // Schema::create('detail_profile', function (Blueprint $table) {
-        //     // $table->bigIncrements('id');
-        //     // $table->string('address');
-        //     // $table->string('nomor_tlp');
-        //     // $table->date('ttl');
-        //     // $table->string('foto');
-        //     // $table->timestamps();
+        //     $table->bigIncrements('id');
+        //     $table->string('address');
+        //     $table->string('nomor_tlp');
+        //     $table->date('ttl');
+        //     $table->string('foto');
+        //     $table->timestamps();
+        // });
 
         //acara 11
         Schema::create('users', function (Blueprint $table) {

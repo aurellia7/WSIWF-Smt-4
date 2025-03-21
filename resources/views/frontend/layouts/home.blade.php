@@ -1,5 +1,7 @@
 @extends('frontend/layouts.template')
+
 @section('content')
+
 <!-- Hero Section -->
 <section id="hero" class="hero section light-background">
  

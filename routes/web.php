@@ -14,6 +14,8 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ApiPendidikanController;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -120,16 +122,18 @@ Route::get("/home", function () {
 
 //Acara 7
 Route::resource('/home7', HomeController::class);
-// Auth::routes();
+
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 //Acara 8
 Route::resource('dashboard', DashboardController::class);
 Route::resource('product', ProductController::class);
 
-//Acara 13
+//Acara 13-16
 Route::group(['namespace' => 'App\Http\Controllers\backend'], function () {
-    // Route::resource('dash', DashboardController::class);
+    Route::resource('dash', DashboardController::class);
     Route::resource('pengalaman_kerja', PengalamanKerjaController::class);
     Route::resource('pendidikan', PendidikanController::class);
 });
@@ -141,6 +145,7 @@ Route::get('/session/delete', [SessionController::class, 'delete']);
 
 Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
 
+//Acara 18
 Route::get('/formulir', [PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
 
